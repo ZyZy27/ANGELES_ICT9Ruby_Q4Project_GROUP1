@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrangeApp Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    body { 
+      background-color: #1a6fa8; 
+      font-family: 'Gill Sans', 'Nunito', sans-serif; 
+      margin: 0; padding: 0; 
+      background-image: url(bg.png); 
+      background-size: cover; 
+    }
+
+    .top-nav { 
+      background-color: #1a6fa8; 
+      padding: 12px 20px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+    }
+
+    .top-nav .school-name { 
+      color: white; 
+      font-weight: 600; 
+      font-size: 18px; 
+      line-height: 1.2; 
+    }
+    .top-nav .school-name span { 
+      font-size: 12px; 
+      font-weight: normal; 
+      display: block; 
+    }
+    .top-nav .logo-area { 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+    }
+    .top-nav .logo-area img { 
+      width: 55px; 
+      height: 55px; 
+      border-radius: 50%; 
+    }
+    .top-nav .right-area { 
+      display: flex; 
+      align-items: center; 
+      gap: 15px; 
+    }
+
+    .top-nav .notif-icon img { 
+      width: 35px; 
+      height: 35px; 
+    }
+    .top-nav .user-box { 
+      background-color: white; 
+      padding: 8px 15px; 
+      border-radius: 6px; 
+      display: flex; 
+      align-items: center; 
+      gap: 10px; 
+      font-size: 14px; 
+      font-weight: 600; 
+      color: black; 
+    }
+
+    .top-nav .user-box img {
+       width: 30px; 
+       height: 30px; 
+       border-radius: 50%; 
+       background-color: #ccc; 
+    }
+
+    .main-layout { 
+      display: flex; 
+      min-height: calc(100vh - 80px); 
+    }
+
+    .sidebar { 
+      width: 80px; 
+      background-color: white; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      padding: 20px 0; 
+      gap: 25px; 
+    }
+
+    .sidebar .nav-icon { 
+      width: 36px; 
+      height: 36px; 
+      cursor: pointer; 
+      opacity: 0.6; 
+    }
+    .sidebar .nav-icon:hover { 
+      opacity: 1; 
+    }
+    .sidebar .nav-icon.active { 
+      opacity: 1; 
+    }
+    .sidebar .logout-icon { 
+      margin-top: auto; 
+      margin-bottom: 20px; 
+      width: 36px; 
+      height: 36px; 
+      cursor: pointer; 
+      opacity: 0.6; 
+    }
+    .sidebar .logout-icon:hover { 
+      opacity: 1; 
+      }
+</style>
+</head>
+<body>
+  <div class="top-nav">
+    <div class="logo-area">
+      <img src="Scho.png" alt="School Logo">
+      <div class="school-name">New Age Scholars<br>University inc.<span>ESTD. 2026</span></div>
+    </div>
+    <div class="right-area">
+      <div class="notif-icon"><img src="notif.png" alt="Notification"></div>
+      <div class="user-box">
+        <p id="user" style="margin:0"></p>
+        <img src="user.png" alt="User Avatar">
+      </div>
+    </div>
+  </div>
+
+  <div class="main-layout">
+    <div class="sidebar">
+      <a href="HomePage2.html"><img class="nav-icon" src="home.png" alt="Home"></a>
+      <a href="Classlist.html"><img class="nav-icon" src="list.png" alt="Classlist"></a>
+      <img class="nav-icon active" src="book.png" alt="Feed">
+      <img class="nav-icon" src="people.png" alt="People">
+      <a href="performance.html"><img class="nav-icon" src="settinngs.png" alt="Settings"></a>
+      <a href="index.html"><button onclick="logout()" style="border:none;background-color:white;"><img class="logout-icon" src="logout.png" alt="Logout"></button></a>
+    </div>
+
+    <div class="col-md-10 p-5">
+      <h6 class="mb-4 text-secondary" id="activityCount">3 created activities</h6>
+      <div class="row">
+
+        <!-- MATH CARD -->
+        <div class="col-md-4 mb-3" id="card-Math">
+          <div class="card shadow-sm h-100 border-0">
+            <div class="card-header" style="background-color:#f5c6aa;color:white;">Seatwork</div>
+            <div class="card-body">
+              <h5 class="card-title text-dark">MATH 9</h5>
+              <div class="d-flex justify-content-between mt-4"><span class="text-dark fw-bold">5 Questions</span></div>
+              <hr>
+              <div class="text-center"><button class="btn btn-primary w-100" onclick="startTest('Math')">Take Test</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ENGLISH CARD-->
+        <div class="col-md-4 mb-3" id="card-English">
+          <div class="card shadow-sm h-100 border-0">
+            <div class="card-header" style="background-color:#a2c2f2;color:white;">Assessment</div>
+            <div class="card-body">
+              <h5 class="card-title text-dark">ENGLISH 9</h5>
+              <div class="d-flex justify-content-between mt-4"><span class="text-dark fw-bold">5 Questions</span></div>
+              <hr>
+              <div class="text-center"><button class="btn btn-primary w-100" onclick="startTest('English')">Take Test</button></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCIENCE CARD -->
+        <div class="col-md-4 mb-3" id="card-Science">
+          <div class="card shadow-sm h-100 border-0">
+            <div class="card-header" style="background-color:#a8e6cf;color:white;">Quiz</div>
+            <div class="card-body">
+              <h5 class="card-title text-dark">SCIENCE 9</h5>
+              <div class="d-flex justify-content-between mt-4"><span class="text-dark fw-bold">5 Questions</span></div>
+              <hr>
+              <div class="text-center"><button class="btn btn-primary w-100" onclick="startTest('Science')">Take Test</button></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- QUIZ MODAL -->
+  <div class="modal fade" id="quizModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">Assessment: <span id="subjectTitle">Subject</span></h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="quizContainer"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-success" onclick="submitTest()">Submit Assessment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    if (currentUser) {
+      document.getElementById('user').innerText = currentUser.name;
+    } else {
+      window.location.href = "login.html";
+    }
+    function logout() {
+      localStorage.removeItem("currentUser");
+      window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

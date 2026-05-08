@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home Page</title>
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    body {
+      background-color: #1a6fa8;
+      font-family: 'Gill Sans', 'Gill Sans MT', 'Nunito', Calibri, 'Trebuchet MS', sans-serif;
+      margin: 0;
+      padding: 0;
+       background-image: url(bg.png);
+      background-size: cover;
+    }
+
+
+    .top-nav {
+      background-color: #1a6fa8;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .top-nav .school-name {
+      color: white;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .top-nav .school-name span {
+      font-size: 12px;
+      font-weight: normal;
+      display: block;
+    }
+
+    .top-nav .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .top-nav .logo-area img {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+    }
+
+    .top-nav .right-area {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .top-nav .notif-icon img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .top-nav .user-box {
+      background-color: white;
+      padding: 8px 15px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: black;
+    }
+
+    .top-nav .user-box img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #ccc;
+    }
+
+  
+    .main-layout {
+      display: flex;
+      min-height: calc(100vh - 80px);
+    }
+
+    
+    .sidebar {
+      width: 80px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+      gap: 25px;
+    }
+
+    .sidebar .nav-icon {
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+
+    .sidebar .nav-icon:hover {
+      opacity: 1;
+    }
+
+    .sidebar .nav-icon.active {
+      opacity: 1;
+    }
+
+    .sidebar .logout-icon {
+      margin-top: auto;
+      margin-bottom: 20px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+
+    .sidebar .logout-icon:hover {
+      opacity: 1;
+    }
+
+  
+    .page-content {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+
+    .feed-column {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+
+    .post-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    .post-card .post-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .post-card .post-header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: #ccc;
+    }
+
+    .post-card .post-header .post-info strong {
+      font-size: 14px;
+      display: block;
+    }
+
+    .post-card .post-header .post-info span {
+      font-size: 12px;
+      color: gray;
+    }
+
+    .post-card .post-image {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+   
+    .right-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+  
+    .calendar-box {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .calendar-box .calendar-title {
+      background-color: #1a6fa8;
+      color: white;
+      padding: 10px 15px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .calendar-box .calendar-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 15px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .calendar-box .calendar-item:last-of-type {
+      border-bottom: none;
+    }
+
+    .calendar-box .date-badge {
+      background-color: #2c2c2c;
+      color: white;
+      border-radius: 6px;
+      text-align: center;
+      padding: 5px 8px;
+      min-width: 45px;
+    }
+
+    .calendar-box .date-badge .month {
+      font-size: 11px;
+    }
+
+    .calendar-box .date-badge .day {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .calendar-box .event-info .event-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .calendar-box .event-info .event-time {
+      font-size: 12px;
+      color: #1a6fa8;
+    }
+
+    .calendar-box .view-more {
+      text-align: center;
+      padding: 8px;
+      font-size: 13px;
+      color: #1a6fa8;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+
+    .activity-box {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .activity-box .activity-title {
+      background-color: #2e7d32;
+      color: white;
+      padding: 10px 15px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .activity-box .activity-item {
+      background-color: #2c2c2c;
+      color: white;
+      margin: 10px;
+      padding: 10px 12px;
+      border-radius: 6px;
+    }
+
+    .activity-box .activity-item .activity-name {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .activity-box .activity-item .activity-status {
+      font-size: 12px;
+      color: #4caf50;
+    }
+
+    .activity-box .activity-item .activity-date {
+      font-size: 12px;
+      color: #ccc;
+    }
+
+  </style>
+</head>
+
+<body>
+
+
+  <div class="top-nav">
+
+  
+    <div class="logo-area">
+      <img src="Scho.png" alt="School Logo">
+      <div class="school-name">
+        New Age Scholars<br>
+        University inc.
+        <span>ESTD. 2026</span>
+      </div>
+    </div>
+
+  
+    <div class="right-area">
+      <div class="notif-icon">
+        <img src="notif.png" alt="Notification">
+      </div>
+      <div class="user-box">
+        <p id="user"></p>
+        <img src="user.png" alt="User Avatar">
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div class="main-layout">
+
+   
+    <div class="sidebar">
+      <img class="nav-icon active" src="home.png" alt="Home">
+      <a href="Classlist.html"><img class="nav-icon" src="list.png" alt="Classlist"></a>
+      <a href="quiz.html"><img class="nav-icon" src="book.png" alt="Feed"></a>
+      <img class="nav-icon" src="people.png" alt="People">
+      <a href="performance.html"><img class="nav-icon" src="settinngs.png" alt="Settings"></a>
+      <a href="index.html"><button onclick="logout()" style="border: none; background-color: white;"><img class="logout-icon" src="logout.png" alt="Logout"></button></a>
+    </div>
+
+
+  
+    <div class="page-content">
+
+      
+      <div class="feed-column">
+
+  
+        <div class="post-card">
+
+          <div class="post-header">
+            <img src="Scho.png" alt="School Avatar">
+            <div class="post-info">
+              <strong>New Age Scholars University - Angeles</strong>
+              <span>May 8, Public</span>
+            </div>
+          </div>
+
+          
+          <img class="post-image" src="skuba.png" alt="School Announcement" style="width: 453px; height: 650px;">
+
+        </div>
+
+      </div>
+
+
+  
+      <div class="right-column">
+
+      
+        <div class="calendar-box">
+          <div class="calendar-title">Calendar</div>
+
+        
+          <div class="calendar-item">
+            <div class="date-badge">
+              <div class="month">May</div>
+              <div class="day">16</div>
+            </div>
+            <div class="event-info">
+              <div class="event-title">Final examinations - A...</div>
+              <div class="event-time">All Day</div>
+            </div>
+          </div>
+
+   
+          <div class="calendar-item">
+            <div class="date-badge">
+              <div class="month">May</div>
+              <div class="day">15</div>
+            </div>
+            <div class="event-info">
+              <div class="event-title">Final examinations - G...</div>
+              <div class="event-time">All Day</div>
+            </div>
+          </div>
+
+     
+          <div class="calendar-item">
+            <div class="date-badge">
+              <div class="month">May</div>
+              <div class="day">30</div>
+            </div>
+            <div class="event-info">
+              <div class="event-title">Final examinations - A...</div>
+              <div class="event-time">All Day</div>
+            </div>
+          </div>
+
+   
+          <div class="calendar-item">
+            <div class="date-badge">
+              <div class="month">Nov</div>
+              <div class="day">30</div>
+            </div>
+            <div class="event-info">
+              <div class="event-title">Final examinations - G...</div>
+              <div class="event-time">All Day</div>
+            </div>
+          </div>
+
+          <a class="view-more" href="#">View more ...</a>
+        </div>
+
+
+     
+        <div class="activity-box">
+          <div class="activity-title">Class Activity</div>
+
+          <div id="activityList"></div>
+
+         
+
+        </div>
+
+      </div>
+      <!-- end right-column -->
+
+    </div>
+    <!-- end page-content -->
+
+  </div>
+  <!-- end main-layout -->
+
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+  if (currentUser){
+    document.getElementById('user').innerText = currentUser.name;
+
+    var allQuizzes = [
+      { name : "MATH - QUIZ", subject: "Math"},
+      { name : "ENGLISH - QUIZ", subject: "English"},
+      { name : "SCIENCE - QUIZ", subject: "Science"}
+    ];
+
+    var doneKey = "quizDone_" + currentUser.studid;
+    var done = JSON.parse(localStorage.getItem(doneKey)) || [];
+
+    var activityList = document.getElementById('activityList');
+    var pending = allQuizzes.filter(function(q){
+      return done.indexOf(q.subject) === -1;
+    });
+
+    if (pending.length === 0){
+      activityList.innerHTML = "<div style='padding:10px;color:#aaa;font-size:13px;'>All activities completed!</div>";
+    } else{
+      pending.forEach(function(q){
+        activityList.innerHTML += "<div class='activity-item'>" + 
+          "<div class='activity-name'>" + q.name+ "</div>" +
+          "<div class='activity-status'>Pending</div>" +
+          "<div class='activity-date'><a href='quiz.html' style='color:#4caf50;'>Go to Quizzes</a></div>"  + "</div>"
+      });
+        
+    }
+    
+  } else {
+    window.location.href = "login.html";
+}
+</script>
+
+</body>
+</html>
